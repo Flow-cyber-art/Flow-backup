@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/icons/icon-48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#1B1B1D" />
+
+    <!-- Fonty: samohostowane (self-hosted) w /public/fonts — pobrane z tych
+         samych źródeł co Google Fonts (identyczne pliki .woff2 i unicode-range),
+         ale serwowane z własnej domeny. Eliminuje to dodatkowe połączenie
+         (DNS + TLS) do fonts.googleapis.com / fonts.gstatic.com, które w teście
+         PageSpeed Insights blokowało renderowanie strony na ~2 sekundy.
+         Preload dla wag widocznych "od ręki" w hero (nagłówek + tekst),
+         reszta wag doczytuje się leniwie wg unicode-range, tak jak wcześniej. -->
+    <link rel="preload" href="/fonts/big-shoulders-display-latin-ext-800-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ibm-plex-sans-latin-ext-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+
+    <!-- Podstawowe SEO -->
+    <title>FLOWTEX Polska | Posadzki przemysłowe i żywiczne – projektowanie i wykonawstwo</title>
+    <meta
+      name="description"
+      content="FLOWTEX Polska projektuje i wykonuje posadzki żywiczne oraz przemysłowe dla zakładów produkcyjnych, spożywczych i farmaceutycznych. Cięcie diamentowe, serwis i naprawa posadzek w całej Polsce."
+    />
+    <meta
+      name="keywords"
+      content="posadzki przemysłowe, posadzki żywiczne, posadzki epoksydowe, posadzki poliuretanowe, posadzki dla przemysłu spożywczego, posadzki farmaceutyczne, technika diamentowa, cięcie betonu, naprawa posadzek, FLOWTEX Polska"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://www.flowtex.pl/" />
+
+    <!-- Open Graph (Facebook, LinkedIn, podglądy w narzędziach AI) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FLOWTEX Polska" />
+    <meta property="og:title" content="FLOWTEX Polska | Posadzki przemysłowe i żywiczne" />
+    <meta
+      property="og:description"
+      content="Projektowanie i wykonawstwo posadzek żywicznych oraz przemysłowych dla zakładów produkcyjnych, spożywczych i farmaceutycznych."
+    />
+    <meta property="og:url" content="https://www.flowtex.pl/" />
+    <meta property="og:image" content="https://www.flowtex.pl/og-image.jpg" />
+    <meta property="og:locale" content="pl_PL" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FLOWTEX Polska | Posadzki przemysłowe i żywiczne" />
+    <meta
+      name="twitter:description"
+      content="Projektowanie i wykonawstwo posadzek żywicznych oraz przemysłowych dla zakładów produkcyjnych, spożywczych i farmaceutycznych."
+    />
+    <meta name="twitter:image" content="https://www.flowtex.pl/og-image.jpg" />
+
+    <!-- Dane strukturalne: firma (do uzupełnienia prawdziwymi danymi) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "FLOWTEX Polska",
+        "description": "Projektowanie i wykonawstwo posadzek żywicznych i przemysłowych dla zakładów produkcyjnych, spożywczych i farmaceutycznych.",
+        "url": "https://www.flowtex.pl/",
+        "telephone": "+48507394552",
+        "email": "kontakt@flowtex.pl",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Ciółkowo Małe 32",
+          "postalCode": "07-215",
+          "addressLocality": "Ciółkowo Małe",
+          "addressCountry": "PL"
+        },
+        "areaServed": "PL",
+        "priceRange": "$$",
+        "founder": {
+          "@type": "Person",
+          "name": "Paweł Najduk",
+          "jobTitle": "Właściciel i dyrektor techniczny"
+        },
+        "sameAs": []
+      }
+    </script>
+
+    <!-- Dane strukturalne: katalog usług -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Posadzki przemysłowe i żywiczne",
+        "provider": { "@type": "LocalBusiness", "name": "FLOWTEX Polska" },
+        "areaServed": "PL",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Usługi FLOWTEX Polska",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Posadzki żywiczne" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Posadzki dla przemysłu spożywczego" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Posadzki farmaceutyczne" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technika diamentowa – cięcie i wiercenie" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Serwis posadzek i kanalizacji" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fitout obiektów przemysłowych" } }
+          ]
+        }
+      }
+    </script>
+    <!-- Dane strukturalne: FAQ — generowane dynamicznie z tablicy FAQ w
+         src/pages/Home.jsx (przez react-helmet-async), żeby nigdy nie
+         rozjechały się z widoczną treścią strony. Renderowane wyłącznie
+         na stronie głównej, gdzie FAQ jest faktycznie widoczne. -->
+
+    <!-- Dane strukturalne: osoba odpowiedzialna technicznie za realizacje
+         (sygnał E-E-A-T — doświadczenie i eksperckość — dla wyszukiwarek AI) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Paweł Najduk",
+        "jobTitle": "Właściciel i dyrektor techniczny",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "FLOWTEX Polska",
+          "url": "https://www.flowtex.pl/"
+        },
+        "description": "Właściciel FLOWTEX Polska odpowiedzialny za techniczną stronę realizacji, z ponad 20-letnim doświadczeniem w branży posadzek przemysłowych i żywicznych oraz setkami zrealizowanych inwestycji w Polsce i za granicą.",
+        "knowsAbout": ["Posadzki przemysłowe", "Posadzki żywiczne", "Technika diamentowa", "Posadzki dla przemysłu spożywczego i farmaceutycznego"]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

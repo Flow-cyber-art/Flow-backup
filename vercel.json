@@ -1,0 +1,19 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "headers": [
+    {
+      "source": "/llms.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!llms\\.txt|robots\\.txt|sitemap\\.xml|favicon\\.ico|site\\.webmanifest|og-image\\.jpg|fonts/|icons/|assets/).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
