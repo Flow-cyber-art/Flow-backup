@@ -110,46 +110,25 @@ function injectHelmet(html, helmet) {
 let count = 0;
 for (const url of routes) {
   const { appHtml, helmet } = await render(url);
+  // Funkcja jako replacer (zamiast gotowego stringa) — .replace() ze
+  // stringiem w drugim argumencie interpretuje w nim sekwencje typu $&,
+  // $$, $1 specjalnie. Gdyby appHtml zawierał znak "$" w odpowiednim
+  // układzie, mogłoby to po cichu uszkodzić wygenerowany HTML.
   let html = template.replace(
     '<div id="root"></div>',
-    `<div id="root">${appHtml}</div>`
+    () => `<div id="root">${appHtml}</div>`
   );
   html = injectHelmet(html, helmet);
 
-  // Płaskie pliki (np. dist/fitout.html) zamiast dist/fitout/index.html.
-  // Dlaczego: Vercel serwuje pliki z filesystemu PRZED zastosowaniem
-  // rewrites, ale przy strukturze folder/index.html i braku trailingSlash
-  // w vercel.json, request na "/fitout" (bez końcowego "/" — dokładnie tak,
-  // jak linkujemy wewnętrznie i jak zbudowane są canonical URL-e) NIE trafiał
-  // w plik statyczny i spadał do naszego catch-all rewrite → dostawał
-  // index.html strony głównej zamiast właściwej podstrony. Płaski plik +
-  // "cleanUrls": true w vercel.json (patrz zmiana w tym pliku) rozwiązuje
-  // to bez zmiany konwencji URL-i (dalej bez trailing slasha).
   const outPath =
     url === "/"
       ? path.join(distDir, "index.html")
-      : path.join(distDir, `${url.slice(1)}.html`);
+      : path.join(distDir, url.slice(1), "index.html");
 
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, html);
   count++;
   console.log(`  ✓ prerendered ${url}`);
-}
-
-// dist/404.html — Vercel serwuje ten plik automatycznie (ze statusem 404)
-// dla każdej ścieżki, która nie trafia w żaden inny statyczny plik. Renderujemy
-// dowolny nieistniejący adres, żeby trafić w trasę "*" (NotFound.jsx) z
-// App.jsx — dzięki temu nieznane URL-e dostają prawdziwe HTTP 404 z waszą
-// stylizowaną stroną, zamiast domyślnej, niebrandowanej strony Vercela.
-{
-  const { appHtml, helmet } = await render("/__not-found__/__404__");
-  let html404 = template.replace(
-    '<div id="root"></div>',
-    `<div id="root">${appHtml}</div>`
-  );
-  html404 = injectHelmet(html404, helmet);
-  fs.writeFileSync(path.join(distDir, "404.html"), html404);
-  console.log("  ✓ prerendered 404.html");
 }
 
 // Sprzątamy tymczasowy build SSR — nie jest potrzebny w finalnym dist/
