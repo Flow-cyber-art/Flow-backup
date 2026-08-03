@@ -23,7 +23,7 @@ export default function Layout({ children }) {
       style={{ fontFamily: "'IBM Plex Sans', sans-serif", backgroundColor: COLORS.lightBg, color: COLORS.darkBg }}
       className="min-h-screen w-full flex flex-col"
     >
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .ft-display { font-family: 'Big Shoulders Display', sans-serif; }
         .ft-mono { font-family: 'IBM Plex Mono', monospace; }
         .ft-tracking-wide { letter-spacing: 0.2em; }
@@ -73,12 +73,12 @@ export default function Layout({ children }) {
         @media (prefers-reduced-motion: reduce) {
           .ft-fab-pulse { animation: none; opacity: 0; }
         }
-      `}</style>
+      ` }} />
 
       {/* TOP BAR — telefon / e-mail */}
       <div className="hidden md:block" style={{ backgroundColor: COLORS.darkBgSecondary }}>
         <div className="max-w-7xl mx-auto px-5 md:px-8 h-9 flex items-center justify-end gap-6 ft-mono text-xs">
-          <a
+          
             href="tel:+48507394552"
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             style={{ color: COLORS.mutedOnDark }}
@@ -86,7 +86,7 @@ export default function Layout({ children }) {
             <Phone size={13} style={{ color: COLORS.white }} />
             +48 507 394 552
           </a>
-          <a
+          
             href="mailto:kontakt@flowtex.pl"
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             style={{ color: COLORS.mutedOnDark }}
@@ -114,7 +114,7 @@ export default function Layout({ children }) {
 
           <nav className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((l) => (
-              <a
+              
                 key={l.href}
                 href={l.href}
                 className="ft-mono text-xs tracking-wider uppercase hover:opacity-70 transition-opacity"
@@ -123,7 +123,7 @@ export default function Layout({ children }) {
                 {l.label}
               </a>
             ))}
-            <a
+            
               href="tel:+48507394552"
               className="ft-mono text-xs tracking-wider uppercase px-4 py-2 rounded-sm hover:opacity-90 transition"
               style={{ backgroundColor: COLORS.accent, color: ACCENT_TEXT, fontWeight: 600 }}
@@ -146,7 +146,7 @@ export default function Layout({ children }) {
         {menuOpen && (
           <div className="md:hidden px-5 pb-5 flex flex-col gap-4" style={{ backgroundColor: COLORS.darkBg }}>
             {NAV_LINKS.map((l) => (
-              <a
+              
                 key={l.href}
                 href={l.href}
                 onClick={() => setMenuOpen(false)}
